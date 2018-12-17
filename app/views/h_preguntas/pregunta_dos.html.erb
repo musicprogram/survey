@@ -1,0 +1,114 @@
+<%= render 'pregunta_header' %>
+
+<h3 class="text-center">2. ¿Cuál es tu tela favorita?</h3>
+
+<br>
+
+<div class="container">
+  <%= form_for @cuestionario, url: wizard_path, method: :put do |f| %>
+      <%= f.hidden_field :paso, value: 2 %>
+      <%= f.fields_for :respuestas, @cuestionario.get_respuestas(2) do |respuesta_fields| %>
+          <%= respuesta_fields.hidden_field :pregunta, value: 2 %>
+          <div class="row">
+            <div class="col-md-4 text-center">
+              <div class="row">
+                <label>
+                  <%= respuesta_fields.radio_button :opcion, 1 %>
+                  A. Fácil de usar: algodón, pana, mezclilla.
+                </label>
+              </div>
+              <br>
+              <div class="row">
+                <%= image_tag 'A-FACILES-DE-USAR-h.png', class: 'img-responsive center-block' %>
+              </div>
+            </div>
+            <div class="col-md-4 text-center">
+              <div class="row">
+                <label>
+                  <%= respuesta_fields.radio_button :opcion, 2 %>
+                  B. Con textura: lana, gabardina, paño fino.
+                </label>
+              </div>
+              <br>
+              <div class="row">
+                <%= image_tag 'B-CON-TEXTURA-h.png', class: 'img-responsive center-block' %>
+              </div>
+            </div>
+            <div class="col-md-4 text-center">
+              <div class="row">
+                <label>
+                  <%= respuesta_fields.radio_button :opcion, 3 %>
+                  C. Calidad: pelo de camello, cashmere, lana 120.
+                </label>
+              </div>
+              <br>
+              <div class="row">
+                <%= image_tag 'C-CALIDAD-h.png', class: 'img-responsive center-block' %>
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-md-4 text-center">
+              <div class="row">
+                <label for="">
+                  <%= respuesta_fields.radio_button :opcion, 4 %>
+                  D. Suave: rayón, lino, seda, crepé.
+                </label>
+              </div>
+              <br>
+              <div class="row">
+                <%= image_tag 'D-SUAVE-h.png', class: 'img-responsive center-block' %>
+              </div>
+            </div>
+            <div class="col-md-4 text-center">
+              <div class="row">
+                <label for="">
+                  <%= respuesta_fields.radio_button :opcion, 5 %>
+                  E. Reveladora: lycra, tejido de punto, piel.
+                </label>
+              </div>
+              <br>
+              <div class="row">
+                <%= image_tag 'E-REVELADORA-h.png', class: 'img-responsive center-block' %>
+              </div>
+            </div>
+            <div class="col-md-4 text-center">
+              <div class="row">
+                <label for="">
+                  <%= respuesta_fields.radio_button :opcion, 6 %>
+                  F. Texturas diferentes con estilos originales.
+                </label>
+              </div>
+              <br>
+              <div class="row">
+                <%= image_tag 'F-TEXTURAS-DIFERENTES-h.png', class: 'img-responsive center-block' %>
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-md-4 text-center">
+              <div class="row">
+                <label for="">
+                  <%= respuesta_fields.radio_button :opcion, 7 %>
+                  G. Con patrones visibles, rayas, cuadros.
+                </label>
+              </div>
+              <br>
+              <div class="row">
+                <%= image_tag 'CON-PATRONES-VISIBLES-h.png', class: 'img-responsive center-block' %>
+              </div>
+            </div>
+          </div>
+      <% end %>
+      <hr>
+      <div class="row">
+        <div class="col-md-12">
+          <%= link_to 'Anterior', previous_wizard_path, class: 'btn btn-primary' %>
+          <%= f.submit 'Siguiente', class: 'btn btn-primary pull-right' %>
+        </div>
+      </div>
+      <br>
+  <% end %>
+</div>

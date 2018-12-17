@@ -1,0 +1,76 @@
+<%= render 'pregunta_header' %>
+
+<h3 class="text-center">8. ¿Cuáles son tus zapatos favoritos?</h3>
+
+<br>
+
+<div class="container">
+  <%= form_for @cuestionario, url: wizard_path, method: :put do |f| %>
+      <%= f.hidden_field :paso, value: 8 %>
+      <%= f.fields_for :respuestas, @cuestionario.get_respuestas(8) do |respuesta_fields| %>
+          <%= respuesta_fields.hidden_field :pregunta, value: 8 %>
+          <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+              <div class="row">
+                <div class="col-md-4">
+                  <label>
+                    <%= respuesta_fields.radio_button :opcion, 1 %>
+                    A. Mocasines con suela de goma
+                  </label>
+                </div>
+                <div class="col-md-4">
+                  <label>
+                    <%= respuesta_fields.radio_button :opcion, 2 %>
+                    B. De piel con punta adornada
+                  </label>
+                </div>
+                <div class="col-md-4">
+                  <label>
+                    <%= respuesta_fields.radio_button :opcion, 3 %>
+                    C. De piel suave con agujetas y suela delgada
+                  </label>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-md-4">
+                  <label for="">
+                    <%= respuesta_fields.radio_button :opcion, 4 %>
+                    D. De gamuza y cómodos
+                  </label>
+                </div>
+                <div class="col-md-4">
+                  <label for="">
+                    <%= respuesta_fields.radio_button :opcion, 5 %>
+                    E. Botas negras
+                  </label>
+                </div>
+                <div class="col-md-4">
+                  <label for="">
+                    <%= respuesta_fields.radio_button :opcion, 6 %>
+                    F. Bota tipo militar, colores atrevidos
+                  </label>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-md-4">
+                  <label for="">
+                    <%= respuesta_fields.radio_button :opcion, 7 %>
+                    G. Zapatos de piel exótica
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+      <% end %>
+      <hr>
+      <div class="row">
+        <div class="col-md-12">
+          <%= link_to 'Anterior', previous_wizard_path, class: 'btn btn-primary' %>
+          <%= f.submit 'Siguiente', class: 'btn btn-primary pull-right' %>
+        </div>
+      </div>
+      <br>
+  <% end %>
+</div>

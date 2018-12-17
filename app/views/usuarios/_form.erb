@@ -1,0 +1,72 @@
+<div class="col-md-6 col-md-offset-3">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Editar usuario</h3>
+    </div>
+    <%= simple_form_for @usuario, url: usuario_path(@usuario) do |f| %>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-12">
+              <%= f.error_notification %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <%= f.input :email, required: true, autofocus: true %>
+            </div>
+            <div class="col-md-6">
+              <%= f.input :nombre %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <%= f.input :tipo_identificacion, as: :select, collection: @usuario.tipo_identificacion_collection,
+                          prompt: false %>
+            </div>
+            <div class="col-md-6">
+              <%= f.input :nro_identificacion %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <%= f.input :fecha_nacimiento, as: :date_picker %>
+            </div>
+            <div class="col-md-6">
+              <%= f.input :lugar_nacimiento %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <%= f.input :telefono %>
+            </div>
+            <div class="col-md-6">
+              <%= f.input :lugar_residencia %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <%= f.input :password, autocomplete: "off", hint: "Dejalo en blanco si no quieres cambiarla", required: false %>
+            </div>
+            <div class="col-md-6">
+              <%= f.input :password_confirmation, required: false %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <%= f.input :role_ids, as: :check_boxes, collection: Role.all, value_method: :id, label_method: :nombre_capitalize, wrapper: :vertical_radio_and_checkboxes %>
+            </div>
+            <div class="col-md-6">
+              <%= f.input :genero, as: :radio_buttons, collection: [['Masculino', true], ['Femenino', false]],
+                          wrapper: :vertical_radio_and_checkboxes %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <%= link_to "Regresar", :back, class: 'btn btn-default' %>
+              <%= f.button :submit, "Actualizar" %>
+            </div>
+          </div>
+        </div>
+    <% end %>
+  </div>
+</div>

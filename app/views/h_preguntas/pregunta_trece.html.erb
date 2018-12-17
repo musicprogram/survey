@@ -1,0 +1,76 @@
+<%= render 'pregunta_header' %>
+
+<h3 class="text-center">13. Cuando estoy frente a otros busco:</h3>
+
+<br>
+
+<div class="container">
+  <%= form_for @cuestionario, url: wizard_path, method: :put do |f| %>
+      <%= f.hidden_field :paso, value: 13 %>
+      <%= f.fields_for :respuestas, @cuestionario.get_respuestas(13) do |respuesta_fields| %>
+          <%= respuesta_fields.hidden_field :pregunta, value: 13 %>
+          <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+              <div class="row">
+                <div class="col-md-4">
+                  <label>
+                    <%= respuesta_fields.radio_button :opcion, 1 %>
+                    A. Ser accesible, entretener.
+                  </label>
+                </div>
+                <div class="col-md-4">
+                  <label>
+                    <%= respuesta_fields.radio_button :opcion, 2 %>
+                    B. Ser correcto.
+                  </label>
+                </div>
+                <div class="col-md-4">
+                  <label>
+                    <%= respuesta_fields.radio_button :opcion, 3 %>
+                    C. Ser discreto, reservado.
+                  </label>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-md-4">
+                  <label for="">
+                    <%= respuesta_fields.radio_button :opcion, 4 %>
+                    D. Servir, atender.
+                  </label>
+                </div>
+                <div class="col-md-4">
+                  <label for="">
+                    <%= respuesta_fields.radio_button :opcion, 5 %>
+                    E. Coquetear.
+                  </label>
+                </div>
+                <div class="col-md-4">
+                  <label for="">
+                    <%= respuesta_fields.radio_button :opcion, 6 %>
+                    F. Romper con lo establecido.
+                  </label>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-md-4">
+                  <label for="">
+                    <%= respuesta_fields.radio_button :opcion, 7 %>
+                    G. Atraer la atención.
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+      <% end %>
+      <hr>
+      <div class="row">
+        <div class="col-md-12">
+          <%= link_to 'Anterior', previous_wizard_path, class: 'btn btn-primary' %>
+          <%= f.submit 'Siguiente', class: 'btn btn-primary pull-right' %>
+        </div>
+      </div>
+      <br>
+  <% end %>
+</div>

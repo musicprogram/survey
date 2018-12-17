@@ -1,0 +1,80 @@
+<%= render 'pregunta_header' %>
+
+<h3 class="text-center">9. ¿Qué es lo que prefieres usar durante el día?</h3>
+
+<br>
+
+<div class="container">
+  <%= form_for @cuestionario, url: wizard_path, method: :put do |f| %>
+      <%= f.hidden_field :paso, value: 9 %>
+      <%= f.fields_for :respuestas, @cuestionario.get_respuestas(9) do |respuesta_fields| %>
+          <%= respuesta_fields.hidden_field :pregunta, value: 9 %>
+          <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+              <div class="row">
+                <div class="col-md-4">
+                  <label>
+                    <%= respuesta_fields.radio_button :opcion, 1 %>
+                    A. Saco sport, camisa casual con botones en el cuello y pantalón combinado.
+                  </label>
+                </div>
+                <div class="col-md-4">
+                  <label>
+                    <%= respuesta_fields.radio_button :opcion, 2 %>
+                    B. Traje conservador.
+                  </label>
+                </div>
+                <div class="col-md-4">
+                  <label>
+                    <%= respuesta_fields.radio_button :opcion, 3 %>
+                    C. Traje muy bien cortado, camisa con puño
+                    doble y mancuernillas.
+                  </label>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-md-4">
+                  <label for="">
+                    <%= respuesta_fields.radio_button :opcion, 4 %>
+                    D. Traje ligero, corbata sencilla.
+                  </label>
+                </div>
+                <div class="col-md-4">
+                  <label for="">
+                    <%= respuesta_fields.radio_button :opcion, 5 %>
+                    E. Camisa con cuello abierto, saco y pantalón
+                    ajustado.
+                  </label>
+                </div>
+                <div class="col-md-4">
+                  <label for="">
+                    <%= respuesta_fields.radio_button :opcion, 6 %>
+                    F. Saco sport de color inusual, camisa oscura y
+                    pantalón con dibujo.
+                  </label>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-md-4">
+                  <label for="">
+                    <%= respuesta_fields.radio_button :opcion, 7 %>
+                    G. Traje tipo europeo, camisa blaca y corbata
+                    contrastante.
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+      <% end %>
+      <hr>
+      <div class="row">
+        <div class="col-md-12">
+          <%= link_to 'Anterior', previous_wizard_path, class: 'btn btn-primary' %>
+          <%= f.submit 'Siguiente', class: 'btn btn-primary pull-right' %>
+        </div>
+      </div>
+      <br>
+  <% end %>
+</div>

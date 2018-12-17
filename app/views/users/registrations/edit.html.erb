@@ -1,0 +1,79 @@
+<div class="col-md-6 col-md-offset-3">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Editar cuenta</h3>
+    </div>
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: {method: :put}) do |f| %>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-12">
+              <%= f.error_notification %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <%= f.input :email, required: true, autofocus: true %>
+              <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                  <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+              <% end %>
+            </div>
+            <div class="col-md-6">
+              <%= f.input :nombre %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <%= f.input :password, autocomplete: "off", hint: "Dejalo en blanco si no quieres cambiarla", required: false %>
+            </div>
+            <div class="col-md-6">
+              <%= f.input :password_confirmation, required: false %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <%= f.input :current_password, hint: "Necesitamos tu contraseña actual para confirmar los cambios", required: true %>
+            </div>
+            <div class="col-md-6">
+              <%= f.input :genero, as: :radio_buttons, collection: [['Masculino', true], ['Femenino', false]],
+                          wrapper: :vertical_radio_and_checkboxes %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <%= f.input :tipo_identificacion, as: :select, collection: resource.tipo_identificacion_collection,
+                          prompt: false %>
+            </div>
+            <div class="col-md-6">
+              <%= f.input :nro_identificacion %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <%= f.input :fecha_nacimiento, as: :date_picker %>
+            </div>
+            <div class="col-md-6">
+              <%= f.input :lugar_nacimiento %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <%= f.input :lugar_residencia %>
+            </div>
+            <div class="col-md-6">
+              <%= f.input :telefono %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <%= link_to "Regresar", :back, class: 'btn btn-default' %>
+              <%= f.button :submit, "Actualizar" %>
+              <hr>
+              <h3>Cancelar mi cuenta</h3>
+
+              <p>Descontento? <%= link_to "Cancelar mi cuenta", registration_path(resource_name), data: {confirm: "¿Esta seguro?"}, method: :delete %></p>
+            </div>
+          </div>
+        </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,52 @@
+<div class="col-md-6 col-md-offset-3">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title"><%= @usuario.nombre %></h3>
+    </div>
+    <table class="table">
+      <tbody>
+      <tr>
+        <th>Correo electrónico:</th>
+        <td><%= @usuario.email %></td>
+      </tr>
+      <tr>
+        <th>Nombre:</th>
+        <td><%= @usuario.nombre %></td>
+      </tr>
+      <tr>
+        <th>Tipo de identificación:</th>
+        <td><%= @usuario.get_tipo_identificacion %></td>
+      </tr>
+      <tr>
+        <th>Número de identificación:</th>
+        <td><%= @usuario.nro_identificacion %></td>
+      </tr>
+      <tr>
+        <th>Fecha de nacimiento</th>
+        <td><%= @usuario.fecha_nacimiento %></td>
+      </tr>
+      <tr>
+        <th>Lugar de nacimiento:</th>
+        <td><%= @usuario.lugar_nacimiento %></td>
+      </tr>
+      <tr>
+        <th>Género:</th>
+        <td><%= @usuario.get_genero %></td>
+      </tr>
+      <tr>
+        <th>Lugar de residencia:</th>
+        <td><%= @usuario.get_lugar_residencia %></td>
+      </tr>
+      <tr>
+        <th>Número de contacto:</th>
+        <td><%= @usuario.get_telefono %></td>
+      </tr>
+      <tr>
+        <th>Autorización:</th>
+        <td><%=@usuario.roles.map(&:nombre_capitalize).join(', ') %></td>
+      </tr>
+      </tbody>
+    </table>
+    <div class="panel-footer"><%= link_to 'Regresar', usuarios_path, class: 'btn btn-sm btn-default' %></div>
+  </div>
+</div>

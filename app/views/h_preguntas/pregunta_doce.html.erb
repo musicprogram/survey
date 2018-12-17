@@ -1,0 +1,76 @@
+<%= render 'pregunta_header' %>
+
+<h3 class="text-center">12. En la ropa busco:</h3>
+
+<br>
+
+<div class="container">
+  <%= form_for @cuestionario, url: wizard_path, method: :put do |f| %>
+      <%= f.hidden_field :paso, value: 12 %>
+      <%= f.fields_for :respuestas, @cuestionario.get_respuestas(12) do |respuesta_fields| %>
+          <%= respuesta_fields.hidden_field :pregunta, value: 12 %>
+          <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+              <div class="row">
+                <div class="col-md-4">
+                  <label>
+                    <%= respuesta_fields.radio_button :opcion, 1 %>
+                    A. Comodidad.
+                  </label>
+                </div>
+                <div class="col-md-4">
+                  <label>
+                    <%= respuesta_fields.radio_button :opcion, 2 %>
+                    B. Durabilidad.
+                  </label>
+                </div>
+                <div class="col-md-4">
+                  <label>
+                    <%= respuesta_fields.radio_button :opcion, 3 %>
+                    C. Exclusividad.
+                  </label>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-md-4">
+                  <label for="">
+                    <%= respuesta_fields.radio_button :opcion, 4 %>
+                    D. Agradar.
+                  </label>
+                </div>
+                <div class="col-md-4">
+                  <label for="">
+                    <%= respuesta_fields.radio_button :opcion, 5 %>
+                    E. Lucir mi cuerpo.
+                  </label>
+                </div>
+                <div class="col-md-4">
+                  <label for="">
+                    <%= respuesta_fields.radio_button :opcion, 6 %>
+                    F. Originalidad.
+                  </label>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-md-4">
+                  <label for="">
+                    <%= respuesta_fields.radio_button :opcion, 7 %>
+                    G. Vanguardia.
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+      <% end %>
+      <hr>
+      <div class="row">
+        <div class="col-md-12">
+          <%= link_to 'Anterior', previous_wizard_path, class: 'btn btn-primary' %>
+          <%= f.submit 'Siguiente', class: 'btn btn-primary pull-right' %>
+        </div>
+      </div>
+      <br>
+  <% end %>
+</div>

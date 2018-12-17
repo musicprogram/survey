@@ -1,0 +1,8 @@
+<div class="jumbotron">
+  <h1>Cuestionario de estilo</h1>
+  <p>
+    Hola <%= current_user.nombre %>, el cuestionario cuenta de <%= current_user.genero ? '14' : '17' %> preguntas
+    de unica respuesta, que lo disfrutes.
+  </p>
+  <%= link_to 'Iniciar cuestionario', new_cuestionario_path, class: 'btn btn-primary' %>
+</div>

@@ -1,0 +1,114 @@
+<%= render 'pregunta_header' %>
+
+<h3 class="text-center">1. ¿Cuáles son tus colores favoritos?</h3>
+
+<br>
+
+<div class="container">
+  <%= form_for @cuestionario, url: wizard_path, method: :put do |f| %>
+      <%= f.hidden_field :paso, value: 1 %>
+      <%= f.fields_for :respuestas, @cuestionario.get_respuestas(1) do |respuesta_fields| %>
+          <%= respuesta_fields.hidden_field :pregunta, value: 1 %>
+          <div class="row">
+            <div class="col-md-4 text-center">
+              <div class="row">
+                <label>
+                  <%= respuesta_fields.radio_button :opcion, 1 %>
+                  A. Ecológicos: cafés, verdes, amarillos, azules, arena.
+                </label>
+              </div>
+              <br>
+              <div class="row">
+                <%= image_tag 'A.-ECOLOGICOS.png', class: 'img-responsive center-block' %>
+              </div>
+            </div>
+            <div class="col-md-4 text-center">
+              <div class="row">
+                <label>
+                  <%= respuesta_fields.radio_button :opcion, 2 %>
+                  B. Sobrios: negro, gris, marino, blanco.
+                </label>
+              </div>
+              <br>
+              <div class="row">
+                <%= image_tag 'B-SOBRIOS.png', class: 'img-responsive center-block' %>
+              </div>
+            </div>
+            <div class="col-md-4 text-center">
+              <div class="row">
+                <label>
+                  <%= respuesta_fields.radio_button :opcion, 3 %>
+                  C. Neutros: beige, marrón, azul.
+                </label>
+              </div>
+              <br>
+              <div class="row">
+                <%= image_tag 'C-NEUTROS.png', class: 'img-responsive center-block' %>
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-md-4 text-center">
+              <div class="row">
+                <label for="">
+                  <%= respuesta_fields.radio_button :opcion, 4 %>
+                  D. Pastel: rosa, azul, lavanda.
+                </label>
+              </div>
+              <br>
+              <div class="row">
+                <%= image_tag 'D-PASTEL.png', class: 'img-responsive center-block' %>
+              </div>
+            </div>
+            <div class="col-md-4 text-center">
+              <div class="row">
+                <label for="">
+                  <%= respuesta_fields.radio_button :opcion, 5 %>
+                  E. Atrevidos: rojo, rosa, morado.
+                </label>
+              </div>
+              <br>
+              <div class="row">
+                <%= image_tag 'E-ATREVIDOS.png', class: 'img-responsive center-block' %>
+              </div>
+            </div>
+            <div class="col-md-4 text-center">
+              <div class="row">
+                <label for="">
+                  <%= respuesta_fields.radio_button :opcion, 6 %>
+                  F. Poco usuales: mostaza, fucsia.
+                </label>
+              </div>
+              <br>
+              <div class="row">
+                <%= image_tag 'F-POCO-USUALES.png', class: 'img-responsive center-block' %>
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-md-4 text-center">
+              <div class="row">
+                <label for="">
+                  <%= respuesta_fields.radio_button :opcion, 7 %>
+                  G. Fuertes: primarios: rojo, azul, amarillo,
+                  contrastados con negro.
+                </label>
+              </div>
+              <br>
+              <div class="row">
+                <%= image_tag 'G-FUERTES.png', class: 'img-responsive center-block' %>
+              </div>
+            </div>
+          </div>
+      <% end %>
+      <hr>
+      <div class="row">
+        <div class="col-md-12">
+          <%= f.submit 'Siguiente', class: 'btn btn-primary pull-right' %>
+        </div>
+      </div>
+      <br>
+  <% end %>
+</div>

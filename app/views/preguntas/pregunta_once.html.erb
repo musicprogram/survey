@@ -1,0 +1,77 @@
+<%= render 'pregunta_header' %>
+
+<h3 class="text-center">11. ¿Cuál es tu calzado favorito?</h3>
+
+<br>
+
+<div class="container">
+  <%= form_for @cuestionario, url: wizard_path, method: :put do |f| %>
+      <%= f.hidden_field :paso, value: 11 %>
+      <%= f.fields_for :respuestas, @cuestionario.get_respuestas(11) do |respuesta_fields| %>
+          <%= respuesta_fields.hidden_field :pregunta, value: 11 %>
+          <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+              <div class="row">
+                <div class="col-md-4">
+                  <label>
+                    <%= respuesta_fields.radio_button :opcion, 1 %>
+                    A. Tenis, mocasines.
+                  </label>
+                </div>
+                <div class="col-md-4">
+                  <label>
+                    <%= respuesta_fields.radio_button :opcion, 2 %>
+                    B. Zapatilla cerrada con tacón bajo.
+                  </label>
+                </div>
+                <div class="col-md-4">
+                  <label>
+                    <%= respuesta_fields.radio_button :opcion, 3 %>
+                    C. Zapato de piel con diseño clásico.
+                  </label>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-md-4">
+                  <label for="">
+                    <%= respuesta_fields.radio_button :opcion, 4 %>
+                    D. Zapato con moño, trabas o adornos.
+                  </label>
+                </div>
+                <div class="col-md-4">
+                  <label for="">
+                    <%= respuesta_fields.radio_button :opcion, 5 %>
+                    E. Tacones altos, sandalias escotadas con tiras
+                    delgadas.
+                  </label>
+                </div>
+                <div class="col-md-4">
+                  <label for="">
+                    <%= respuesta_fields.radio_button :opcion, 6 %>
+                    F. Botas tipo militar.
+                  </label>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-md-4">
+                  <label for="">
+                    <%= respuesta_fields.radio_button :opcion, 7 %>
+                    G. Botines de ante, zapatos con talón desnudo.
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+      <% end %>
+      <hr>
+      <div class="row">
+        <div class="col-md-12">
+          <%= link_to 'Anterior', previous_wizard_path, class: 'btn btn-primary' %>
+          <%= f.submit 'Siguiente', class: 'btn btn-primary pull-right' %>
+        </div>
+      </div>
+      <br>
+  <% end %>
+</div>

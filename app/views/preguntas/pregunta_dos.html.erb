@@ -1,0 +1,116 @@
+<%= render 'pregunta_header' %>
+
+<h3 class="text-center">2. ¿Cuál es tu tela favorita?</h3>
+
+<br>
+
+<div class="container">
+  <%= form_for @cuestionario, url: wizard_path, method: :put do |f| %>
+      <%= f.hidden_field :paso, value: 2 %>
+      <%= f.fields_for :respuestas, @cuestionario.get_respuestas(2) do |respuesta_fields| %>
+          <%= respuesta_fields.hidden_field :pregunta, value: 2 %>
+          <div class="row">
+            <div class="col-md-4 text-center">
+              <div class="row">
+                <label>
+                  <%= respuesta_fields.radio_button :opcion, 1 %>
+                  A. Fácil de ciudar: algodón, mezclilla.
+                </label>
+              </div>
+              <br>
+              <div class="row">
+                <%= image_tag 'A-FACIL-DE-CUIDAR.png', class: 'img-responsive center-block' %>
+              </div>
+            </div>
+            <div class="col-md-4 text-center">
+              <div class="row">
+                <label>
+                  <%= respuesta_fields.radio_button :opcion, 2 %>
+                  B. Texturas con cuerpo: gabardina, tweed,
+                  lana.
+                </label>
+              </div>
+              <br>
+              <div class="row">
+                <%= image_tag 'B-TEXTURAS-CON-CUERPO.png', class: 'img-responsive center-block' %>
+              </div>
+            </div>
+            <div class="col-md-4 text-center">
+              <div class="row">
+                <label>
+                  <%= respuesta_fields.radio_button :opcion, 3 %>
+                  C. Buena calidad: cashmere, seda, lino.
+                </label>
+              </div>
+              <br>
+              <div class="row">
+                <%= image_tag 'C-BUENA-CALIDAD.png', class: 'img-responsive center-block' %>
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-md-4 text-center">
+              <div class="row">
+                <label for="">
+                  <%= respuesta_fields.radio_button :opcion, 4 %>
+                  D. Ligera: Chiffon, rayón, seda.
+                </label>
+              </div>
+              <br>
+              <div class="row">
+                <%= image_tag 'D-LIGERA.png', class: 'img-responsive center-block' %>
+              </div>
+            </div>
+            <div class="col-md-4 text-center">
+              <div class="row">
+                <label for="">
+                  <%= respuesta_fields.radio_button :opcion, 5 %>
+                  E. Que ajustan: jersey, stretch, punto, piel.
+                </label>
+              </div>
+              <br>
+              <div class="row">
+                <%= image_tag 'E-QUE-AJUSTAN.png', class: 'img-responsive center-block' %>
+              </div>
+            </div>
+            <div class="col-md-4 text-center">
+              <div class="row">
+                <label for="">
+                  <%= respuesta_fields.radio_button :opcion, 6 %>
+                  F. Texturas diferentes: algodón burdo,
+                  lana, poléster.
+                </label>
+              </div>
+              <br>
+              <div class="row">
+                <%= image_tag 'F-TEXTURAS-DIFERENTES.png', class: 'img-responsive center-block' %>
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-md-4 text-center">
+              <div class="row">
+                <label for="">
+                  <%= respuesta_fields.radio_button :opcion, 7 %>
+                  G. Texturas firmes: piel, gabardina, cashmere.
+                </label>
+              </div>
+              <br>
+              <div class="row">
+                <%= image_tag 'G-TEXTURAS-FIRMES.png', class: 'img-responsive center-block' %>
+              </div>
+            </div>
+          </div>
+      <% end %>
+      <hr>
+      <div class="row">
+        <div class="col-md-12">
+          <%= link_to 'Anterior', previous_wizard_path, class: 'btn btn-primary' %>
+          <%= f.submit 'Siguiente', class: 'btn btn-primary pull-right' %>
+        </div>
+      </div>
+      <br>
+  <% end %>
+</div>

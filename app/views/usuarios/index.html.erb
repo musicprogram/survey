@@ -1,0 +1,35 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Usuarios</h3>
+  </div>
+  <div class="panel-body table-responsive">
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Correo eletrónico</th>
+        <th>Nombre</th>
+        <th>Tipo de identificación</th>
+        <th>Número de identificación</th>
+        <th>Género</th>
+        <th class="text-center">Acciones</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @usuarios.each do |usuario| %>
+          <tr>
+            <td><%= usuario.email %></td>
+            <td><%= usuario.nombre %></td>
+            <td><%= usuario.get_tipo_identificacion %></td>
+            <td><%= usuario.nro_identificacion %></td>
+            <td><%= usuario.get_genero %></td>
+            <td class="text-center">
+              <%= link_to 'Detalles', usuario_path(usuario), class: 'btn btn-sm btn-info' %>
+              <%= link_to 'Editar', edit_usuario_path(usuario), class: 'btn btn-sm btn-warning' %>
+              <%= link_to 'Eliminar', usuario_path(usuario), method: :delete, data: {confirm: '¿Esta seguro?'}, class: 'btn btn-sm btn-danger' %>
+            </td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

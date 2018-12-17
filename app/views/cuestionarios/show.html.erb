@@ -1,0 +1,40 @@
+<div class="page-header text-center">
+  <h1>Resultado</h1>
+</div>
+
+<div class="container">
+  <div class="col-md-10 col-md-offset-1">
+    <canvas id="myChart"></canvas>
+  </div>
+  <script>
+    var ctx = $("#myChart");
+    var data = {
+      labels: <%= raw @cuestionario.resultado_labels %>,
+      datasets: [
+        {
+          label: "Mi Estilo",
+          backgroundColor: "rgba(179,181,198,0.2)",
+          borderColor: "rgba(179,181,198,1)",
+          pointBackgroundColor: "rgba(179,181,198,1)",
+          pointBorderColor: "#fff",
+          pointHoverBackgroundColor: "#fff",
+          pointHoverBorderColor: "rgba(179,181,198,1)",
+          data: <%= raw @cuestionario.resultados %>
+        }
+      ]
+    };
+    var options = {
+      scale: {
+        reverse: false,
+        ticks: {
+          beginAtZero: true
+        }
+      }
+    };
+    var myRadarChart = new Chart(ctx, {
+      type: 'radar',
+      data: data,
+      options: options
+    });
+  </script>
+</div>
